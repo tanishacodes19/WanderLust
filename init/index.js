@@ -1,11 +1,10 @@
 const mongoose = require("mongoose");
 const initdata = require("./data.js");
 const Listing = require("../models/listing.js");
+require("dotenv").config();
 
 async function main() {
-    await mongoose.connect(
-        "mongodb+srv://tanishaagarwal0109_db_user:KVEB2K80Jjxw4wwj@cluster0.ic3m34x.mongodb.net/wanderlust"
-    );
+    await mongoose.connect(process.env.ATLASDB_URL);
 }
 
 main()
