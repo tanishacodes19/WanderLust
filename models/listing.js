@@ -9,10 +9,11 @@ const listingSchema = new Schema({
     description: String,
     image: {
         type: String,
-        set: (v) => 
-            v === "" 
-                ? "https://unsplash.com/photos/dramatic-sunset-over-a-dark-mountain-valley-j3f1lwXBuAI"
-                : v.url,
+        default: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+        set: (v) =>
+            v === ""
+                ? "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+                : v,
     },
     price: Number,
     location: String,
