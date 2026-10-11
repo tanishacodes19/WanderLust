@@ -2,65 +2,78 @@
 
 ### Discover places. Explore stays. Find your next getaway.
 
-WanderLust is a full-stack travel listing web application built with **Node.js, Express.js, MongoDB, and EJS**. It allows users to browse travel accommodations, explore listing details, and manage property listings through a simple web interface.
+WanderLust is a full-stack travel listing web application inspired by platforms for discovering places to stay. Built using **Node.js, Express.js, MongoDB, and EJS**, the project allows users to browse property listings and manage listing information through a simple web interface.
 
-🔗 **Repository:** [tanishacodes19/WanderLust](https://github.com/tanishacodes19/WanderLust)
+> 🚧 **Project Status: In Development**
 
----
+I'm actively developing WanderLust and improving its functionality, interface, and overall user experience.
 
 ## ✨ Features
 
-- **Browse Listings** — Explore available travel properties in a card-based interface.
-- **View Listing Details** — See a property's title, description, image, price, location, and country.
-- **Create Listings** — Add new properties through a form.
-- **Edit Listings** — Update existing property information.
-- **Delete Listings** — Remove listings from the database.
-- **Responsive Styling** — Custom CSS for the application's interface.
-- **Reusable Layouts** — Shared EJS layouts, navigation bar, and footer.
-- **MongoDB Integration** — Store and retrieve listing data using Mongoose.
-- **Asynchronous Error Handling** — A reusable utility for wrapping asynchronous route handlers.
+### Currently Implemented
+
+- **Browse Listings:** View available property listings.
+- **Listing Details:** View individual properties with their information.
+- **Create Listings:** Add new properties through a form.
+- **Edit Listings:** Update existing listing information.
+- **Delete Listings:** Remove listings from the application.
+- **Database Integration:** Store and retrieve listing data using MongoDB Atlas.
+- **Reusable Layouts:** Use EJS layouts and shared components to keep the interface consistent.
+- **Custom Styling:** Style the application using CSS.
+- **Asynchronous Route Handling:** Use a reusable wrapper for handling asynchronous route operations.
+
+*Note: Features listed here reflect the implemented code structure; verify each feature in the running application as development continues.*
 
 ## 🛠️ Tech Stack
 
 | Technology | Purpose |
 |---|---|
 | Node.js | JavaScript runtime |
-| Express.js 5 | Server and routing |
+| Express.js | Backend web framework |
 | MongoDB Atlas | Cloud database |
-| Mongoose | Database models and queries |
-| EJS | Dynamic server-rendered pages |
-| EJS-Mate | Layouts and reusable templates |
-| Method-Override | PUT and DELETE form requests |
-| dotenv | Environment variable configuration |
-| HTML, CSS, JavaScript | Frontend and styling |
+| Mongoose | MongoDB object modeling |
+| EJS | Dynamic HTML templating |
+| EJS-Mate | Reusable layouts and template blocks |
+| HTML5 | Page structure |
+| CSS3 | Styling and layout |
+| JavaScript | Application logic |
+| Method-Override | Support for PUT and DELETE form requests |
+| dotenv | Environment variable management |
 
 ## 📁 Project Structure
 
 ```text
 WanderLust/
+│
 ├── init/
-│   ├── data.js
 │   └── index.js
+│
 ├── models/
 │   └── listing.js
+│
 ├── public/
 │   ├── css/
 │   │   └── style.css
 │   └── js/
 │       └── script.js
+│
 ├── utils/
 │   └── wrapAsync.js
+│
 ├── views/
 │   ├── includes/
-│   │   ├── footer.ejs
-│   │   └── navbar.ejs
+│   │   ├── navbar.ejs
+│   │   └── footer.ejs
+│   │
 │   ├── layouts/
 │   │   └── boilerplate.ejs
+│   │
 │   └── listings/
-│       ├── edit.ejs
 │       ├── index.ejs
 │       ├── new.ejs
+│       ├── edit.ejs
 │       └── show.ejs
+│
 ├── .gitignore
 ├── app.js
 ├── package.json
@@ -70,118 +83,139 @@ WanderLust/
 
 ## 🚀 Getting Started
 
-Follow these steps to run WanderLust locally.
+Follow these steps to run WanderLust on your local machine.
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) and npm
-- A [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) account, or another compatible MongoDB deployment
-- Git
+Make sure you have the following installed:
 
-### 1. Clone the repository
+- [Node.js](https://nodejs.org/)
+- npm (included with Node.js)
+- A [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) account
+
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/tanishacodes19/WanderLust.git
+```
+
+### 2. Navigate to the Project Directory
+
+```bash
 cd WanderLust
 ```
 
-### 2. Install dependencies
+### 3. Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Configure environment variables
+### 4. Configure Environment Variables
 
-Create a `.env` file in the project root:
+Create a `.env` file in the root directory:
 
 ```env
-ATLASDB_URL=mongodb+srv://USERNAME:PASSWORD@YOUR_CLUSTER.mongodb.net/wanderlust
+ATLASDB_URL=your_mongodb_atlas_connection_string
 ```
 
-Replace the placeholders with your own MongoDB Atlas database username, password, and cluster hostname.
+Replace the placeholder with your MongoDB Atlas connection string.
 
-Ensure your Atlas database user has the necessary permissions and your current IP address is allowed in Network Access.
+Make sure your database credentials are configured correctly and your IP address is allowed in your Atlas network access settings.
 
-**Security:** Never commit `.env` or publish database credentials. Keep `.env` in `.gitignore`.
+**Security note:** Never commit your `.env` file or expose your database credentials on GitHub.
 
-### 4. Initialize sample data (optional)
+### 5. Initialize Sample Data (Optional)
 
-To populate the database with the sample listings included in the project, run:
+If you want to populate the database with the project's sample listings, run:
 
 ```bash
 node init/index.js
 ```
 
-> **Warning:** The initialization script deletes existing listing documents before inserting the sample data. Run it only when you intend to reset and reload those listings.
+**Warning:** The initialization script deletes existing listing documents before inserting sample data. Back up any data you want to keep before running it.
 
-### 5. Start the server
+### 6. Start the Application
 
 ```bash
 node app.js
 ```
 
-Once the database connection succeeds, open:
+Once the server starts and the database connection succeeds, open:
 
-**http://localhost:8080**
+```text
+http://localhost:8080
+```
 
-## 🧭 Application Routes
+## 🛣️ Application Routes
 
 | Method | Route | Description |
 |---|---|---|
-| `GET` | `/` | Root page |
-| `GET` | `/listings` | Display all listings |
-| `GET` | `/listings/new` | Show the create-listing form |
-| `POST` | `/listings` | Create a listing |
-| `GET` | `/listings/:id` | View listing details |
-| `GET` | `/listings/:id/edit` | Show the edit form |
-| `PUT` | `/listings/:id` | Update a listing |
-| `DELETE` | `/listings/:id` | Delete a listing |
+| GET | `/` | Display the home route |
+| GET | `/listings` | Display all listings |
+| GET | `/listings/new` | Display the form to create a listing |
+| POST | `/listings` | Create a listing |
+| GET | `/listings/:id` | Display an individual listing |
+| GET | `/listings/:id/edit` | Display the edit form |
+| PUT | `/listings/:id` | Update a listing |
+| DELETE | `/listings/:id` | Delete a listing |
 
 ## 🗄️ Data Model
 
-Each listing is represented by a Mongoose model and can contain:
+Each listing uses a Mongoose schema with the following fields:
 
-- `title` — Property name
-- `description` — Property details
-- `image` — Image URL
-- `price` — Listing price
-- `location` — Property location
-- `country` — Country where the property is located
+| Field | Description |
+|---|---|
+| `title` | Title of the property |
+| `description` | Description of the property |
+| `image` | Image URL for the property |
+| `price` | Property price |
+| `location` | Property location |
+| `country` | Country where the property is located |
 
-MongoDB stores the listing documents, while Mongoose defines the model and handles database operations.
+## 🧠 What I'm Learning
 
-## 🧠 What I Learned
+Through this project, I'm gaining practical experience with:
 
-This project provides practical experience with:
-
-- Building a server-rendered web application using Express and EJS.
-- Implementing CRUD operations.
-- Connecting Node.js applications to MongoDB Atlas using Mongoose.
-- Organizing views with reusable layouts and partials.
-- Handling HTML form submissions and HTTP method overrides.
-- Structuring code with reusable asynchronous error-handling utilities.
-- Managing project dependencies and environment variables.
+- Building server-side applications using Node.js and Express.js.
+- Designing RESTful routes for CRUD operations.
+- Connecting an application to MongoDB Atlas using Mongoose.
+- Rendering dynamic pages with EJS.
+- Organizing code into models, views, utilities, and route handlers.
+- Managing configuration through environment variables.
+- Using Git and GitHub to manage project development.
 
 ## 🔮 Future Improvements
 
-Potential next steps for the project include:
+The following features are planned as development continues:
 
-- User authentication and authorization.
-- Search, filtering, and sorting of listings.
-- Reviews and ratings.
-- Image uploads and image storage integration.
-- Improved form validation and error pages.
-- Deployment with a publicly accessible live demo.
-- More extensive mobile and accessibility testing.
+- [ ] User registration and login
+- [ ] Authentication and authorization
+- [ ] Search, filtering, and sorting
+- [ ] Reviews and ratings
+- [ ] Property image uploads
+- [ ] Improved input validation and error pages
+- [ ] Responsive UI and accessibility improvements
+- [ ] Deployment with a live demo
+
+*Planned features will be marked as completed as they are implemented and tested.*
+
+## 🔒 Security
+
+- Keep database credentials in environment variables.
+- Do not commit `.env` or `node_modules/`.
+- Validate user input before storing data.
+- Configure database access permissions appropriately.
 
 ## 👩‍💻 Author
 
 **Tanisha Agarwal**
 
 - GitHub: [@tanishacodes19](https://github.com/tanishacodes19)
-- Project: [WanderLust](https://github.com/tanishacodes19/WanderLust)
+- Project Repository: [WanderLust](https://github.com/tanishacodes19/WanderLust)
 
 ---
 
-*Built as a hands-on full-stack web development project.*
+⭐ If you find this project interesting, feel free to explore the repository as development continues.
+
+*Built with curiosity, code, and a love for creating things.*
